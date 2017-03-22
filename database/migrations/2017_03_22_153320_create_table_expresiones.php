@@ -19,10 +19,10 @@ class CreateTableExpresiones extends Migration
             $table->string('expresion');
             // determina a que grupo de expresiones vamos a poner
             $table->integer('categoria_id')->unsigned();
-            $table->foreignkey('categoria_id')->references('id')->on('categorias');
+            $table->foreign('categoria_id')->references('id')->on('categorias');
             // determina de que idioma extranjero viene
             $table->integer('idioma_id')->unsigned();
-            $table->foreignkey('idioma_id')->references('id')->on('idiomas');
+            $table->foreign('idioma_id')->references('id')->on('idiomas');
 
             $table->timestamps();
         });

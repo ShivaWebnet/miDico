@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Idioma extends Model
 {
-    //
+  /**
+  * Tabla asociada al Modelo
+  */
+  protected $table = 'idiomas';
 }

@@ -15,6 +15,15 @@ class CreateTableExpresiones extends Migration
     {
         Schema::create('expresiones', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('materna');
+            $table->string('expresion');
+            // determina a que grupo de expresiones vamos a poner
+            $table->integer('categoria_id')->unsigned();
+            $table->foreignkey('categoria_id')->references('id')->on('categorias');
+            // determina de que idioma extranjero viene
+            $table->integer('idioma_id')->unsigned();
+            $table->foreignkey('idioma_id')->references('id')->on('idiomas');
+
             $table->timestamps();
         });
     }
@@ -27,5 +36,8 @@ class CreateTableExpresiones extends Migration
     public function down()
     {
         Schema::dropIfExists('expresiones');
+        Schema::enableForeignKeyConstraints();
+
+        $table->dropForeign(['categoria_id','idioma_id']);
     }
 }

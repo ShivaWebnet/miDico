@@ -39,6 +39,30 @@ class IdiomasController extends Controller{
   }
 
   /**
+  * Búsqueda del idioma indicado por el ID
+  * @var $id
+  */
+  public function preEdit($id){
+    $idioma = Idioma::where('id', $id)->first();
+    return view('edit_idioma', ['idioma'=>$idioma]);
+  }
+  /**
+  * Recogida de datos del form previa comparacion de IDs
+  * más grabación en BBDD
+  * @var $request
+  * @var $id
+  */
+  public function edit(Request $request, $id){
+    $nuevoIdioma = $request->input('idioma');
+
+    $idioma = Idioma::find($id);
+    $idioma->idioma = $nuevoIdioma;
+    $idioma->save();
+
+    return redirect('idiomas');
+  }
+
+  /**
   * Borra el idioma
   * @var $id
   */

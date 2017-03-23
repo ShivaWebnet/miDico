@@ -37,4 +37,13 @@ class IdiomasController extends Controller{
     $idiomaNuevo->save();
     return redirect('idiomas');
   }
+
+  /**
+  * Borra el idioma
+  * @var $id
+  */
+  public function borraIdioma($id){
+    Idioma::destroy($id);
+    return redirect('idiomas');
+  }
 }

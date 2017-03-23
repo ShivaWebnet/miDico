@@ -10,3 +10,4 @@ Route::get('/', 'HomeController@index');
 Route::get('idiomas', 'IdiomasController@index'); // Mándame todos los idiomas que tengo guardados
 Route::get('idiomas/add/', 'IdiomasController@insertaIdioma');// Muestra form para insertar idioma
 Route::post('idiomas/create', 'IdiomasController@guardaIdioma'); // Lo guarda
+Rote::get('idiomas/borra/{id}', 'IdiomasController@borraIdioma'); // Bórrame el idioma con X id

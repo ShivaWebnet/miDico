@@ -10,4 +10,8 @@ class Categoria extends Model
   * Tabla asociada al Modelo
   */
   protected $table = 'categorias';
+
+  public function expresiones(){
+    return $this->hasMany('miDico\Expresion');
+  }
 }

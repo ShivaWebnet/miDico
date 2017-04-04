@@ -31,3 +31,5 @@ Route::post('categorias/mod/{id}', 'CategoriasController@edit'); // Grabamos la 
 *
 */
 Route::get('diccionario', 'DicoController@index');
+Route::get('diccionario/add', 'DicoController@insertaExpresion');
+Route::post('diccionario/create', 'DicoController@guardaExpresion');

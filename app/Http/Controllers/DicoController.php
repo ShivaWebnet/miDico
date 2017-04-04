@@ -4,6 +4,8 @@ namespace miDico\Http\Controllers;
 
 use Illuminate\Http\Request;
 use miDico\Expresion;
+use miDico\Categoria;
+use miDico\Idioma;
 
 class DicoController extends Controller{
 
@@ -31,5 +33,24 @@ class DicoController extends Controller{
       ->get();
 
     return view('diccionario', ['expresiones'=>$expresiones]);
+  }
+
+  public function insertaExpresion(){
+    $categorias = Categoria::all();
+    $idiomas = Idioma::all();
+
+    return view('add_expresion', ['categorias'=>$categorias, 'idiomas'=>$idiomas]);
+  }
+  public function guardaExpresion(Request $request){
+    $expresionNew = new Expresion;
+
+    $expresionNew->materna = $request->materna;
+    $expresionNew->expresion = $request->expresion;
+    $expresionNew->idioma_id = $request->idioma;
+    $expresionNew->categoria_id = $request->categoria;
+
+    $expresionNew->save();
+
+    return redirect('diccionario');
   }
 }

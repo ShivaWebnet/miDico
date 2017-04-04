@@ -55,7 +55,7 @@ class CategoriasController extends Controller{
   * @var $id
   */
   public function edit(Request $request, $id){
-    $nuevaCategoria = $request->input('categoria');
+    $nuevaCategoria = $request->categoria;
 
     $categoria = Categoria::find($id);
     $categoria->categoria = $nuevaCategoria;

@@ -53,4 +53,33 @@ class DicoController extends Controller{
 
     return redirect('diccionario');
   }
+
+  public function preEdit($id){
+    $categorias = Categoria::all();
+    $idiomas = Idioma::all();
+    // necesarios para volver a listar los nombres
+    $expresion = Expresion::where('id', $id)->first();
+    return view('edit_exp',
+      ['expresion'=>$expresion,
+      'idiomas'=>$idiomas,
+      'categorias'=>$categorias]);
+  }
+
+  public function edit(Request $request, $id){
+    $materna = $request->newMaterna;
+    $expresion = $request->newExpresion;
+    $categoria_id = $request->newCategoria;
+    $idioma_id = $request->newIdioma;
+
+    $expresionObjetivo = Expresion::find($id);
+
+    $expresionObjetivo->materna = $materna;
+    $expresionObjetivo->expresion = $expresion;
+    $expresionObjetivo->categoria_id = $categoria_id;
+    $expresionObjetivo->idioma_id = $idioma_id;
+
+    $expresionObjetivo->save();
+
+    return redirect('diccionario');
+  }
 }

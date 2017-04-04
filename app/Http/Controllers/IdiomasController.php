@@ -53,7 +53,7 @@ class IdiomasController extends Controller{
   * @var $id
   */
   public function edit(Request $request, $id){
-    $nuevoIdioma = $request->input('idioma');
+    $nuevoIdioma = $request->idioma;
 
     $idioma = Idioma::find($id);
     $idioma->idioma = $nuevoIdioma;

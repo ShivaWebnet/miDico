@@ -18,7 +18,8 @@
                 <td>{{ $i->idioma }}</td>
                 <td>{{ $i->expresion }}</td>
                 <td>{{ $i->categoria }}</td>
-                <td></td>
+                <td><a href="diccionario/edit/{{$i->id}}">Editar</a></td>
+                <td><a href="diccionario/borra/{{$i->id}}">Borrar</a></td>
               </tr>
             @endforeach
           </table>

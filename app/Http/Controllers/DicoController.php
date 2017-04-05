@@ -82,4 +82,9 @@ class DicoController extends Controller{
 
     return redirect('diccionario');
   }
+
+  public function borra($id){
+    Expresion::destroy($id);
+    return redirect('diccionario');
+  }
 }

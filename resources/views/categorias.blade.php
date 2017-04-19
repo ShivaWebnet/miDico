@@ -21,4 +21,8 @@
     </div>
   </div>
 </div>
+
+<div class="fixed-action-btn">
+  <a href="{{ url('categorias/add') }}" class="btn-floating btn-large blue"><i class="material-icons">add</i></a>
+</div>
 @endsection

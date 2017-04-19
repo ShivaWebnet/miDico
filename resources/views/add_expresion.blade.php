@@ -1,29 +1,39 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
   <form action="/diccionario/create" method="post">
     {{ csrf_field() }}
 
-    <label for="materna">Expresión materna</label>
-    <input type="text" name="materna"><br>
+    <div class="input-field">
+      <input type="text" name="materna" class="validate" required>
+      <label for="materna">Expresión materna</label>
+    </div>
 
-    <label for="expresion">Expresión extranjera</label>
-    <input type="text" name="expresion"><br>
+    <div class="input-field">
+      <input type="text" name="expresion" class="validate" required>
+      <label for="expresion">Expresión extranjera</label>
+    </div>
 
-    <label for="idioma">Guardar en el idioma:</label>
-    <select name="idioma">
-      @foreach($idiomas as $x)
-        <option value="{{ $x->id }}">{{ $x->idioma }}</option>
-      @endforeach
-    </select><br>
+    <div class="input-field">
+      <select name="idioma" required>
+        <option value="" disabled selected>Selecciona idioma</option>
+        @foreach($idiomas as $x)
+          <option value="{{ $x->id }}">{{ $x->idioma }}</option>
+        @endforeach
+      </select>
+    </div>
 
-    <label for="categoria">Guardar en categoría:</label>
-    <select name="categoria">
-      @foreach($categorias as $y)
-        <option value="{{ $y->id }}">{{ $y->categoria }}</option>
-      @endforeach
-    </select><br>
+    <div class="input-field">
+      <select name="categoria" required>
+        <option value="" disabled selected>Selecciona categoría</option>
+        @foreach($categorias as $y)
+          <option value="{{ $y->id }}">{{ $y->categoria }}</option>
+        @endforeach
+      </select>
+    </div>
 
-    <input type="submit" value="Añadir">
+    <input type="submit" value="Añadir" class="waves-effect waves-light btn blue darken-2">
   </form>
+</div>
 @endsection

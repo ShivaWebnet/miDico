@@ -29,8 +29,34 @@
       <a href="{{ url('/') }}" class="brand-logo">
         {{ config('app.name', 'Laravel') }}
       </a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"></a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse">
+        <i class="material-icons">menu</i>
+      </a>
       <ul class="right hide-on-med-and-down">
+        @if (Auth::guest())
+          <li><a href="{{ route('login') }}">Login</a></li>
+          <li><a href="{{ route('register') }}">Registrar</a></li>
+        @else
+          <li><a href="{{ url('diccionario') }}">Diccionario</a></li>
+          <li><a href="{{ url('idiomas') }}">Idiomas</a></li>
+          <li><a href="{{ url('categorias') }}">Categorías</a></li>
+          <!-- logout -->
+          <li>
+            <a href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+              document.getElementById('logout-form').submit();">
+                Salir
+            </a>
+
+            <form id="logout-form" action="{{route('logout')}}" method="post" style="display:none">
+              {{ csrf_field() }}
+            </form>
+          </li>
+          <!-- end logout -->
+        @endif
+      </ul>
+      <!-- PARA LA VERSION MOVIL -->
+      <ul class="side-nav" id="mobile-demo">
         @if (Auth::guest())
           <li><a href="{{ route('login') }}">Login</a></li>
           <li><a href="{{ route('register') }}">Registrar</a></li>
@@ -66,6 +92,7 @@
   <script type="text/javascript">
     $(document).ready(function(){
       $('select').material_select();
+      $(".button-collapse").sideNav();
     });
   </script>
 </body>
